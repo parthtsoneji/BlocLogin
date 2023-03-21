@@ -39,7 +39,8 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
-
+  final baseURL = 'https://coupinos-app.azurewebsites.net';
+  final defaultImagePath = '/user/defaultImages/4';
   Widget _loginWidget([LoginResponse? list]) {
     return Container(
       child: Scaffold(
@@ -55,12 +56,15 @@ class _LoginPageState extends State<LoginPage> {
               onPressed: () => Navigator.pop(context),
               icon: const Icon(
                 Icons.arrow_back,
-                color: Colors.black,
+                color: Color(0xFFF8485E),
               ),
             ),
             elevation: 0,
             pinned: true,
-            actions: const [Icon(Icons.edit, color: Color(0xFFF8485E))],
+            actions: const [Padding(
+              padding: EdgeInsets.only(right: 20),
+              child: Icon(Icons.edit, color: Color(0xFFF8485E)),
+            )],
             backgroundColor: Colors.white,
           ),
           SliverToBoxAdapter(
@@ -72,14 +76,9 @@ class _LoginPageState extends State<LoginPage> {
                   alignment: AlignmentDirectional.topCenter,
                   child: Column(
                     children: [
-                      Container(
-                          width: 80,
-                          height: 80,
-                          decoration: BoxDecoration(
-                            color: Colors.black45,
-                            borderRadius: BorderRadius.circular(40),
-                          ),
-                          child: const Text("")),
+                      Image.network(
+                        "$baseURL$defaultImagePath"
+                      ),
                       const SizedBox(height: 20),
                       Container(
                           height: 45,
@@ -213,28 +212,5 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
-
-    // floatingActionButtonLocation: FloatingActionButtonLocation
-    //     .centerFloat,
-    // floatingActionButton: Padding(
-    //   padding: EdgeInsets.only(bottom: MediaQuery
-    //       .of(context)
-    //       .size
-    //       .height / 30),
-    //   child: FloatingActionButton.extended(
-    //     backgroundColor: Colors.pinkAccent,
-    //     onPressed: () {},
-    //     isExtended: true,
-    //     extendedPadding: EdgeInsets.all(MediaQuery
-    //         .of(context)
-    //         .size
-    //         .width / 2.5),
-    //     shape: RoundedRectangleBorder(
-    //         borderRadius: BorderRadius.circular(8)),
-    //     label: const Text("Submit", style: TextStyle(fontSize: 16,
-    //         color: Colors.white,
-    //         fontWeight: FontWeight.bold),),
-    //   ),
-    // ),
   }
 }
