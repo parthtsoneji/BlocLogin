@@ -39,8 +39,9 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
+
   final baseURL = 'https://coupinos-app.azurewebsites.net';
-  final defaultImagePath = '/user/defaultImages/4';
+
   Widget _loginWidget([LoginResponse? list]) {
     return Container(
       child: Scaffold(
@@ -52,19 +53,13 @@ class _LoginPageState extends State<LoginPage> {
               style: const TextStyle(color: Colors.black),
             ),
             centerTitle: true,
-            leading: IconButton(
-              onPressed: () => Navigator.pop(context),
-              icon: const Icon(
-                Icons.arrow_back,
-                color: Color(0xFFF8485E),
-              ),
-            ),
-            elevation: 0,
             pinned: true,
-            actions: const [Padding(
-              padding: EdgeInsets.only(right: 20),
-              child: Icon(Icons.edit, color: Color(0xFFF8485E)),
-            )],
+            actions: const [
+              Padding(
+                padding: EdgeInsets.only(right: 20),
+                child: Icon(Icons.edit, color: Color(0xFFF8485E)),
+              )
+            ],
             backgroundColor: Colors.white,
           ),
           SliverToBoxAdapter(
@@ -77,14 +72,13 @@ class _LoginPageState extends State<LoginPage> {
                   child: Column(
                     children: [
                       Image.network(
-                        "$baseURL$defaultImagePath"
-                      ),
+                          "$baseURL${list.contactperson!.defaultImagePath.toString()}"),
                       const SizedBox(height: 20),
                       Container(
                           height: 45,
                           width: 300,
                           decoration: BoxDecoration(
-                            color: Colors.pinkAccent,
+                            color: Color(0xFFF8485E),
                             borderRadius: BorderRadius.circular(7.0),
                           ),
                           child: const Center(
